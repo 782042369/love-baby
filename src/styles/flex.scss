@@ -1,0 +1,71 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-10-09 11:40:36
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-10-09 11:50:59
+ * @Description: flex 布局兼容IE10
+ */
+@mixin flex100 {
+  display: flex;
+  width: 100%;
+}
+
+.flex {
+  @include flex100;
+}
+
+.flex_Y-center {
+  @include flex100;
+  align-items: center;
+}
+
+.flex_X-center {
+  @include flex100;
+  justify-content: center;
+}
+
+.flex_Y-center_X-between {
+  @include flex100;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex_Y-center_X-center {
+  @include flex100;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex_Y-center_X-end {
+  @include flex100;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex_Y-center_X-around {
+  @include flex100;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flex_wrap {
+  @include flex100;
+  flex-wrap: wrap;
+}
+
+@mixin absoluteleft {
+  position: absolute;
+  left: 50%;
+}
+
+// 父设置 relative
+.middle_X {
+  @include absoluteleft;
+  transform: translate(-50%);
+}
+
+.flex_X_Y {
+  @include absoluteleft;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

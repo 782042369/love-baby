@@ -1,0 +1,56 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-06-12 12:59:19
+ * @LastEditTime: 2018-06-12 12:59:19
+ * @Description: 浏览器默认样式重置
+ */
+html{box-sizing:border-box;}
+*,:after,:before{box-sizing:inherit;}
+body,dd,div,dl,dt,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,pre,td,textarea,th,ul,button{margin:0;padding:0;}
+fieldset,img{border:0;}
+li,ol,ul{list-style:none;}
+button,h1,h2,h3,h4,h5,h6,input,select,textarea{font-size:100%;}
+input,textarea{padding-left:0;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
+address,cite,dfn,em,i,var{font-style:normal;}
+a{color:#777E8C;text-decoration:none;font-size:14px;}
+input::-webkit-input-placeholder{color:#AEAEAE;}
+input:-moz-placeholder{color:#AEAEAE;}
+input::-moz-placeholder{color:#AEAEAE;}
+input:-ms-input-placeholder{color:#AEAEAE;}
+textarea{overflow:auto;border:none;resize:none !important;}
+a:active,a:focus{outline:0;}
+input,button,textarea{outline: none !important;}
+body {
+  font-size: 15px;
+  font-family: PingFangSC-Regular,"Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  background: #fbfbfb;
+}
+html {
+  box-sizing: border-box;
+}
+body,html,#app{
+  width: 100%;
+  height:100%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+div:focus{
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
