@@ -82,10 +82,10 @@ module.exports = {
           remPrecision: 6
         })
         .end()
-      generateLoaders('css')
-      generateLoaders('scss')
-      generateLoaders('sass')
     }
+    generateLoaders('css')
+    generateLoaders('scss')
+    generateLoaders('sass')
     // 修改它的选项...
     function handleSetloader(rule, loader, addres) { // 修改loader
       config.module
