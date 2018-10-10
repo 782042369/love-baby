@@ -10,11 +10,8 @@ npm install
 npm install --registry=https://registry.npm.taobao.org
 
 ## serve with hot reload at localhost:9528
-npm run dev:phone phone project
-npm run dev:pc pc project
+npm run dev
 
 ## build for production with minification
-npm run build:pc pc project
-npm run build:phone phone project
-
+npm run build
 ```
