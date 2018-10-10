@@ -19,31 +19,6 @@ function resolve(dir) {
  * vue inspect > output.js 调试配置
  * https://cli.vuejs.org/zh/guide/webpack.html#%E5%AE%A1%E6%9F%A5%E9%A1%B9%E7%9B%AE%E7%9A%84-webpack-%E9%85%8D%E7%BD%AE
  */
-let page = {}
-if (process.env.VUE_APP_TITLE === 'phone') {
-  page = {
-    index: { // phone
-      // 人口文件
-      // page 的入口
-      entry: 'src/page/phone',
-      // 模板来源
-      template: 'public/phone.html',
-      // 在 dist/index.html 的输出
-      filename: 'index.html',
-      // 提取出来的通用 chunk
-      chunks: ['vendor', 'runtime', 'vant', 'index']
-    }
-  }
-} else {
-  page = {
-    index: { // pc
-      entry: 'src/page/pc',
-      template: 'public/pc.html',
-      filename: 'index.html',
-      chunks: ['vendor', 'runtime', 'index']
-    }
-  }
-}
 module.exports = {
   baseUrl: './',
   outputDir: 'dist',
@@ -63,7 +38,19 @@ module.exports = {
     proxy: 'http://172.31.242.152:8080' // 这会告诉开发服务器将任何未知请求 (没有匹配到静态文件的请求) 代理到http://172.28.50.78:8081。
   },
   // 人口文件
-  pages: page,
+  pages: {
+    index: { // phone
+      // 人口文件
+      // page 的入口
+      entry: 'src/page/phone',
+      // 模板来源
+      template: 'public/phone.html',
+      // 在 dist/index.html 的输出
+      filename: 'index.html',
+      // 提取出来的通用 chunk
+      chunks: ['vendor', 'runtime', 'vant', 'index']
+    }
+  },
   lintOnSave: true,
   chainWebpack: config => {
     /**
@@ -71,31 +58,30 @@ module.exports = {
      *Prefetch 链接将会消耗带宽。如果你的应用很大且有很多 async chunk，而用户主要使用的是对带宽较敏感的移动端，那么你可能需要关掉 prefetch 链接并手动选择要提前获取的代码区块。
      */
     config.plugins.delete('prefetch-index')
-    if (process.env.VUE_APP_TITLE === 'phone') {
-      function generateLoaders(loader) {
-        config.module
-          .rule(loader)
-          .oneOf('vue')
-          .use('px2rem-loader')
-          .loader('px2rem-loader')
-          .before('postcss-loader') // this makes it work.
-          .options({
-            remUnit: 37.5,
-            remPrecision: 6
-          })
-          .end()
-        config.module
-          .rule(loader)
-          .oneOf('normal')
-          .use('px2rem-loader')
-          .loader('px2rem-loader')
-          .before('postcss-loader') // this makes it work.
-          .options({
-            remUnit: 37.5,
-            remPrecision: 6
-          })
-          .end()
-      }
+
+    function generateLoaders(loader) {
+      config.module
+        .rule(loader)
+        .oneOf('vue')
+        .use('px2rem-loader')
+        .loader('px2rem-loader')
+        .before('postcss-loader') // this makes it work.
+        .options({
+          remUnit: 37.5,
+          remPrecision: 6
+        })
+        .end()
+      config.module
+        .rule(loader)
+        .oneOf('normal')
+        .use('px2rem-loader')
+        .loader('px2rem-loader')
+        .before('postcss-loader') // this makes it work.
+        .options({
+          remUnit: 37.5,
+          remPrecision: 6
+        })
+        .end()
       generateLoaders('css')
       generateLoaders('scss')
       generateLoaders('sass')
@@ -129,14 +115,15 @@ module.exports = {
     // 全局scss 函数注入
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
+
     function addStyleResource(rule) {
       rule.use('style-resource')
-      .loader('style-resources-loader')
-      .options({
-        patterns: [
-          path.resolve(__dirname, './src/styles/mixin.scss')
-        ]
-      })
+        .loader('style-resources-loader')
+        .options({
+          patterns: [
+            path.resolve(__dirname, './src/styles/mixin.scss')
+          ]
+        })
     }
     config.module
       .rule('eslint')

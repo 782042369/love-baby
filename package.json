@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:phone": "vue-cli-service serve --port 8080 --mode phone",
-    "build:phone": "vue-cli-service build --progress --mode productionphone",
-    "dev:pc": "vue-cli-service serve --port 8080 --mode pc",
-    "build:pc": "vue-cli-service build --progress --mode productionpc",
+    "dev": "vue-cli-service serve --open --port 8080",
+    "build": "vue-cli-service build --mode=production --progress",
     "lint": "vue-cli-service lint --mode=test"
   },
   "dependencies": {
