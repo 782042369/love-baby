@@ -24,6 +24,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+div {
+  height: 5000px;
+}
 button {
   width: 500px;
   height: 100px;
