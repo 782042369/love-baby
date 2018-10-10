@@ -1,5 +1,5 @@
 import lottie from 'lottie-web'
-import animationData from './animation.js'
+import animationData from './loading.json'
 let Loading = {}
 // 避免重复install，设立flag
 Loading.installed = false
