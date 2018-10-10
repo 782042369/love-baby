@@ -127,6 +127,19 @@ module.exports = {
     handleSetloader('images', 'url-loader', 'img')
     handleSetloader('svg', 'file-loader', 'img')
     handleSetloader('fonts', 'url-loader', 'fonts')
+
+    // 全局scss 函数注入
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
+    function addStyleResource(rule) {
+      rule.use('style-resource')
+      .loader('style-resources-loader')
+      .options({
+        patterns: [
+          path.resolve(__dirname, './src/styles/mixin.scss')
+        ]
+      })
+    }
     config.module
       .rule('eslint')
       .test(/\.(vue|(j|t)sx?)$/)

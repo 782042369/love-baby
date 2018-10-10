@@ -2,13 +2,9 @@
  * @Author: yanghognxuan
  * @Date: 2018-10-09 11:40:36
  * @LastEditors: yanghognxuan
- * @LastEditTime: 2018-10-09 11:50:59
+ * @LastEditTime: 2018-10-10 10:24:29
  * @Description: flex 布局兼容IE10
  */
-@mixin flex100 {
-  display: flex;
-  width: 100%;
-}
 
 .flex {
   @include flex100;
@@ -53,19 +49,14 @@
   flex-wrap: wrap;
 }
 
-@mixin absoluteleft {
-  position: absolute;
-  left: 50%;
-}
 
 // 父设置 relative
 .middle_X {
-  @include absoluteleft;
+  @include absolute(50%);
   transform: translate(-50%);
 }
 
 .flex_X_Y {
-  @include absoluteleft;
-  top: 50%;
+  @include absolute(50%,50%);
   transform: translate(-50%, -50%);
 }

@@ -1,0 +1,62 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-10-10 10:20:16
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-10-10 10:35:59
+ * @Description: 每次更改需要重启cli 常用 mixin 总结
+ * flex100 flex 布局
+ * singleline-ellipsis 文字溢出
+ * opacity 透明度 兼容IE
+ * line-height 行高
+ * absolute 定位
+ */
+// flex
+@mixin flex100($width:0) {
+  display: flex;
+  width: 100% - $width;
+}
+
+// 字体溢出 不设置为100%
+@mixin singleline-ellipsis($substract:0) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100% - $substract;
+}
+
+// 透明度
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+/* 行高 */
+@mixin line-height($height:30px, $line-height:30px) {
+  @if ($height !=null) {
+    height: $height + px;
+  }
+
+  @if ($line-height !=null) {
+    line-height: $line-height + px;
+  }
+}
+@mixin absolute ($left:50%, $top:50%) {
+  position: absolute;
+  @if ($left !=null) {
+    left: $left;
+  }
+  @if ($top !=null) {
+    top: $top;
+  }
+}
+
+$lineCount: 4;
+$count: 10;
+
+@function randomNum($max, $min: 0, $u: 1) {
+  @return ($min + random($max)) * $u;
+}
+
+@function randomColor() {
+  @return rgb(randomNum(255), randomNum(255), randomNum(255));
+}
