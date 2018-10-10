@@ -2,7 +2,7 @@
  * @Author: yanghognxuan
  * @Date: 2018-10-09 11:41:05
  * @LastEditors: yanghognxuan
- * @LastEditTime: 2018-10-09 11:41:05
+ * @LastEditTime: 2018-10-10 10:50:41
  * @Description: cli 配置
  */
 const path = require('path')
@@ -22,25 +22,25 @@ function resolve(dir) {
 let page = {}
 if (process.env.VUE_APP_TITLE === 'phone') {
   page = {
-    phone: { // phone
+    index: { // phone
       // 人口文件
       // page 的入口
       entry: 'src/page/phone',
       // 模板来源
       template: 'public/phone.html',
       // 在 dist/index.html 的输出
-      filename: 'phone.html',
+      filename: 'index.html',
       // 提取出来的通用 chunk
-      chunks: ['vendor', 'runtime', 'vant', 'phone']
+      chunks: ['vendor', 'runtime', 'vant', 'index']
     }
   }
 } else {
   page = {
-    pc: { // pc
+    index: { // pc
       entry: 'src/page/pc',
       template: 'public/pc.html',
-      filename: 'pc.html',
-      chunks: ['vendor', 'runtime', 'pc']
+      filename: 'index.html',
+      chunks: ['vendor', 'runtime', 'index']
     }
   }
 }
@@ -70,9 +70,7 @@ module.exports = {
      *https://cli.vuejs.org/zh/guide/html-and-static-assets.html#prefetch
      *Prefetch 链接将会消耗带宽。如果你的应用很大且有很多 async chunk，而用户主要使用的是对带宽较敏感的移动端，那么你可能需要关掉 prefetch 链接并手动选择要提前获取的代码区块。
      */
-    config.plugins.delete('prefetch-pc')
-    config.plugins.delete('prefetch-phone')
-
+    config.plugins.delete('prefetch-index')
     if (process.env.VUE_APP_TITLE === 'phone') {
       function generateLoaders(loader) {
         config.module

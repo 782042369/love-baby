@@ -18,7 +18,3 @@ npm run build:pc pc project
 npm run build:phone phone project
 
 ```
-```
-http://localhost:8080/pc.html pc站
-http://localhost:8080/phone.html M站
-```
