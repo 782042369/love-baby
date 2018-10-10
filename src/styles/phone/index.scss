@@ -1,2 +1,21 @@
 @import '../flex.scss'; // flex 布局
 @import '../reset.scss'; // 浏览器默认样式统一
+#zw-loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .15);
+  z-index: 9999;
+  &>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+  }
+}
