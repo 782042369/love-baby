@@ -58,34 +58,6 @@ module.exports = {
      *Prefetch 链接将会消耗带宽。如果你的应用很大且有很多 async chunk，而用户主要使用的是对带宽较敏感的移动端，那么你可能需要关掉 prefetch 链接并手动选择要提前获取的代码区块。
      */
     config.plugins.delete('prefetch-index')
-
-    function generateLoaders(loader) {
-      config.module
-        .rule(loader)
-        .oneOf('vue')
-        .use('px2rem-loader')
-        .loader('px2rem-loader')
-        .before('postcss-loader') // this makes it work.
-        .options({
-          remUnit: 37.5,
-          remPrecision: 6
-        })
-        .end()
-      config.module
-        .rule(loader)
-        .oneOf('normal')
-        .use('px2rem-loader')
-        .loader('px2rem-loader')
-        .before('postcss-loader') // this makes it work.
-        .options({
-          remUnit: 37.5,
-          remPrecision: 6
-        })
-        .end()
-    }
-    generateLoaders('css')
-    generateLoaders('scss')
-    generateLoaders('sass')
     // 修改它的选项...
     function handleSetloader(rule, loader, addres) { // 修改loader
       config.module
