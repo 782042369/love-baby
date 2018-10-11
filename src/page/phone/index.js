@@ -2,7 +2,6 @@ import Vue from 'vue'
 import '@/styles/phone/index.scss' // 移动站 css
 import App from './App'
 import router from '@/router/phone'
-import 'lib-flexible/flexible.js'
 import Vant from 'vant'
 import filters from '@/utils/filters'
 import '@/components/componentRegister'
