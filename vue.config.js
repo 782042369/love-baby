@@ -44,7 +44,7 @@ module.exports = {
       // page 的入口
       entry: 'src/page/phone',
       // 模板来源
-      template: 'public/phone.html',
+      template: 'public/index.html',
       // 在 dist/index.html 的输出
       filename: 'index.html',
       // 提取出来的通用 chunk
