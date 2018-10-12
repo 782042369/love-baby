@@ -41,17 +41,21 @@ export default {
     }
   },
   created() {
+    console.log(this.$router)
     document.title = '首页'
   },
   methods: {
     go() {
-      this.$loading.show()
+      // this.$loading.show()
+      this.$router.push(
+        { path: 'flextable' }
+      )
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-button{
+button {
   width: 300px;
   height: 40px;
   border: none;

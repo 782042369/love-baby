@@ -16,8 +16,12 @@ let routeList = [{
 {
   path: '/',
   name: 'index',
-  titleL: '开发',
   component: _import('phone/index/home')
+},
+{
+  path: 'flextable',
+  name: 'flextable',
+  component: _import('phone/index/flextable')
 }
 ]
 export default new Router({
