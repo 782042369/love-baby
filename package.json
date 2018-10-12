@@ -30,6 +30,7 @@
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-safe-parser": "^4.0.1",
+    "prerender-spa-plugin": "^3.4.0",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-element-ui": "^1.1.4",

@@ -11,6 +11,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const env = process.env.NODE_ENV
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -151,6 +153,16 @@ module.exports = {
       config.plugins.push(
         new webpack.HashedModuleIdsPlugin(),
         new BundleAnalyzerPlugin(), // 打包分析
+        new PrerenderSPAPlugin({
+          staticDir: path.join(__dirname, 'dist'),
+          routes: ['/home'],
+          renderer: new Renderer({
+            inject: {
+              foo: 'bar'
+            },
+            renderAfterDocumentEvent: 'render-event'
+          })
+        }),
         new CompressionWebpackPlugin({
           // gz
           asset: '[path].gz[query]',
